@@ -1,0 +1,33 @@
+.meteo-widget {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 220px;
+    text-align: center;
+    background: #f9f9f9;
+    font-family: Arial, sans-serif;
+    margin: 10px auto;
+}
+.meteo-city {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+.meteo-icon img {
+    width: 64px;
+    height: 64px;
+}
+.meteo-temp {
+    font-size: 2em;
+    color: #2196f3;
+    margin: 8px 0;
+}
+.meteo-desc {
+    font-size: 1em;
+    color: #555;
+}
+@media (max-width: 480px) {
+    .meteo-widget { max-width: 100%; padding: 8px; }
+    .meteo-icon img { width: 48px; height: 48px; }
+    .meteo-temp { font-size: 1.5em; }
+}
