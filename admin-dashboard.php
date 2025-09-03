@@ -154,7 +154,7 @@ function meteo_fr_dashboard_page() {
         var citySelect = document.getElementById('meteo_fr_city');
         if(countrySelect && citySelect) {
             countrySelect.addEventListener('change', function() {
-                var nonce = '<?php echo wp_create_nonce('meteo_fr_nonce'); ?>';
+                var nonce = '<?php echo esc_attr( wp_create_nonce('meteo_fr_nonce') ); ?>';
                 var country = this.value;
                 citySelect.style.opacity = 0.5;
                 fetch(ajaxurl, {
@@ -197,7 +197,7 @@ function meteo_fr_dashboard_page() {
 // AJAX : Récupérer les villes selon le pays
 add_action('wp_ajax_meteo_fr_get_cities', function() {
     check_ajax_referer('meteo_fr_nonce', 'nonce');
-    $country = sanitize_text_field($_POST['country']);
+    $country = isset($_POST['country']) ? sanitize_text_field( wp_unslash($_POST['country']) ) : '';
     $cities = meteo_fr_get_cities_by_country($country);
     wp_send_json($cities);
 });
@@ -206,8 +206,8 @@ add_action('wp_ajax_meteo_fr_get_cities', function() {
 add_action('admin_post_meteo_fr_save', function() {
     if (!current_user_can('manage_options')) wp_die('Non autorisé');
     check_admin_referer('meteo_fr_save', 'meteo_fr_nonce_field');
-    $country = sanitize_text_field($_POST['meteo_fr_country']);
-    $city = sanitize_text_field($_POST['meteo_fr_city']);
+    $country = isset($_POST['meteo_fr_country']) ? sanitize_text_field( wp_unslash($_POST['meteo_fr_country']) ) : '';
+    $city = isset($_POST['meteo_fr_city']) ? sanitize_text_field( wp_unslash($_POST['meteo_fr_city']) ) : '';
     update_option('meteo_fr_country', $country);
     update_option('meteo_fr_city', $city);
     wp_redirect(admin_url('admin.php?page=meteo_fr_dashboard&saved=1'));

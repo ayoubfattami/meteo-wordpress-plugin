@@ -75,7 +75,15 @@ require_once plugin_dir_path(__FILE__) . 'widget-shortcode.php';
 // Charger les assets admin
 add_action('admin_enqueue_scripts', function($hook) {
     if ($hook == 'toplevel_page_meteo_fr_dashboard') {
-        wp_enqueue_script('meteo-admin-js', plugin_dir_url(__FILE__) . 'assets/js/meteo-admin.js', ['jquery'], null, true);
+        $js_path = plugin_dir_path(__FILE__) . 'assets/js/meteo-admin.js';
+        $js_url = plugin_dir_url(__FILE__) . 'assets/js/meteo-admin.js';
+        wp_enqueue_script(
+            'meteo-admin-js',
+            $js_url,
+            ['jquery'],
+            file_exists($js_path) ? filemtime($js_path) : '1.0',
+            true
+        );
         wp_localize_script('meteo-admin-js', 'meteoFR', [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('meteo_fr_nonce')
@@ -85,5 +93,12 @@ add_action('admin_enqueue_scripts', function($hook) {
 
 // Charger le CSS du widget côté public
 add_action('wp_enqueue_scripts', function() {
-    wp_enqueue_style('meteo-widget-css', plugin_dir_url(__FILE__) . 'assets/css/meteo-widget.css');
+    $css_path = plugin_dir_path(__FILE__) . 'assets/css/meteo-widget.css';
+    $css_url = plugin_dir_url(__FILE__) . 'assets/css/meteo-widget.css';
+    wp_enqueue_style(
+        'meteo-widget-css',
+        $css_url,
+        [],
+        file_exists($css_path) ? filemtime($css_path) : '1.0'
+    );
 });

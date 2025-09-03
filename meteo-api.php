@@ -66,7 +66,7 @@ function meteo_fr_get_cities_by_country($country) {
         ],
         'Canada' => [
             'Toronto', 'Montreal', 'Vancouver', 'Calgary', 'Ottawa', 'Edmonton', 'Mississauga', 'Winnipeg', 'Quebec', 'Hamilton',
-            'Brampton', 'Surrey', 'Kitchener', 'Halifax', 'London', 'Victoria', 'Markham', 'Windsor', 'Gatineau'
+            'Brampton', 'Surrey', 'Kitchener', 'Halifax', 'Victoria', 'Markham', 'Windsor', 'Gatineau'
         ],
         'United States of America' => [
             'New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose',

@@ -32,7 +32,7 @@ import './editor.scss';
 export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
-			{ __( 'Meteo Fr – hello from the editor!', 'meteo-fr' ) }
+			{ __( 'meteo-fr – hello from the editor!', 'meteo-fr' ) }
 		</p>
 	);
 }

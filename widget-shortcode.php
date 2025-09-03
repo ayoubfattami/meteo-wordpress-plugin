@@ -78,10 +78,10 @@ add_shortcode('meteo_fr_widget', function() {
     </style>
     <div class="meteo-widget-center">
         <div class="meteo-widget">
-            <div class="meteo-city"><?php echo $city_name; ?></div>
-            <div class="meteo-icon"><img src="<?php echo $icon; ?>" alt="<?php echo $desc; ?>" /></div>
-            <div class="meteo-temp"><?php echo $temp; ?>°C</div>
-            <div class="meteo-desc"><?php echo $desc; ?></div>
+            <div class="meteo-city"><?php echo esc_html($city_name); ?></div>
+            <div class="meteo-icon"><img src="<?php echo esc_url($icon); ?>" alt="<?php echo esc_attr($desc); ?>" /></div>
+            <div class="meteo-temp"><?php echo esc_html($temp); ?>°C</div>
+            <div class="meteo-desc"><?php echo esc_html($desc); ?></div>
             <div class="meteo-copyright">
                 Données météo par <a href="https://meteomaroc.fr" target="_blank" rel="noopener">meteomaroc.fr</a>
             </div>
